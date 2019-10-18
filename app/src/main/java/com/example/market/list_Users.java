@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -35,6 +37,15 @@ public class list_Users extends AppCompatActivity {
         userList = findViewById(R.id.idUserLit);
         //List users information
         viewData();
+
+        //Events
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+               String text = userList.getItemAtPosition(i).toString();
+               Toast.makeText(list_Users.this, "info" + text, Toast.LENGTH_SHORT).show();;
+            }
+        });
     }
 
     private void viewData() {
